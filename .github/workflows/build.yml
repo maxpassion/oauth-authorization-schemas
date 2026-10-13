@@ -1,0 +1,54 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "draft-liu-oauth-authorization-schemas-*.md"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+
+      - run: gem install kramdown-rfc2629 --no-document
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install xml2rfc
+
+      - name: Build xml/txt/html from markdown
+        run: |
+          set -e
+          for md in draft-liu-oauth-authorization-schemas-*.md; do
+            base="${md%.md}"
+            echo "Building $base"
+            kramdown-rfc2629 "$md" > "$base.xml"
+            xml2rfc --v3 "$base.xml" --text -o "$base.txt"
+            xml2rfc --v3 "$base.xml" --html -o "$base.html"
+          done
+
+      - name: Commit rebuilt files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add draft-liu-oauth-authorization-schemas-*.xml \
+                  draft-liu-oauth-authorization-schemas-*.txt \
+                  draft-liu-oauth-authorization-schemas-*.html
+          if git diff --cached --quiet; then
+            echo "No build changes to commit"
+          else
+            git commit -m "Rebuild xml/txt/html from markdown source"
+            git push
+          fi
