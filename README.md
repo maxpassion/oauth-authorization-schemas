@@ -12,6 +12,7 @@ IETF 126.
 
 ## Current version
 
+- Markdown: [draft-liu-oauth-authorization-schemas-00.md](draft-liu-oauth-authorization-schemas-00.md)
 - Text: [draft-liu-oauth-authorization-schemas-00.txt](draft-liu-oauth-authorization-schemas-00.txt)
 - HTML: [draft-liu-oauth-authorization-schemas-00.html](draft-liu-oauth-authorization-schemas-00.html)
 
