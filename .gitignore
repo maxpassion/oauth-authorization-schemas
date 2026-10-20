@@ -1,0 +1,7 @@
+.DS_Store
+lib/
+.refcache
+.targets.mk
+.venv/
+.gems/
+Gemfile.lock
