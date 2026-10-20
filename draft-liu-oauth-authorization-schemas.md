@@ -1473,10 +1473,10 @@ The registry is initially empty. The `transaction_authority` example
 in {{example-transaction-authority}} is non-normative and is not
 registered.
 
-## JWT Access Token Claims Registration {#iana-schema-ref}
+## JSON Web Token Claims Registration {#iana-schema-ref}
 
-This specification registers the following claim in the "JWT Access
-Token JWT Claims" registry established by {{!RFC9068}}:
+This specification registers the following claim in the "JSON Web
+Token Claims" registry established by {{!RFC7519}}:
 
 Claim Name:
 : schema_ref
@@ -1484,6 +1484,24 @@ Claim Name:
 Claim Description:
 : A reference to a registered, approved schema instance in JWT
   access tokens.
+
+Change Controller:
+: IETF
+
+Specification Document:
+: {{schema-ref-claim}} of this document
+
+## Token Introspection Response Registration {#iana-introspection}
+
+This specification registers the following parameter in the "Token
+Introspection Response" registry established by {{!RFC7662}}:
+
+Parameter Name:
+: schema_ref
+
+Parameter Description:
+: A reference to a registered, approved schema instance, as an
+  alternative to inline instance content.
 
 Change Controller:
 : IETF
