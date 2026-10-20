@@ -1,7 +1,7 @@
 ---
 title: Domain-Specific Authorization Schemas for OAuth 2.0
 abbrev: Authorization Schemas
-docname: draft-liu-oauth-authorization-schemas-00
+docname: draft-liu-oauth-authorization-schemas
 category: std
 submissiontype: IETF
 ipr: trust200902

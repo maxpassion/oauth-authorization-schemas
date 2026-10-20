@@ -12,22 +12,31 @@ IETF 126.
 
 ## Current version
 
-- Text: [draft-liu-oauth-authorization-schemas-00.txt](draft-liu-oauth-authorization-schemas-00.txt)
-- HTML: [draft-liu-oauth-authorization-schemas-00.html](draft-liu-oauth-authorization-schemas-00.html)
+- Text: [draft-liu-oauth-authorization-schemas.txt](draft-liu-oauth-authorization-schemas.txt)
+- HTML: [draft-liu-oauth-authorization-schemas.html](draft-liu-oauth-authorization-schemas.html)
 
 The markdown source is
-[draft-liu-oauth-authorization-schemas-00.md](draft-liu-oauth-authorization-schemas-00.md).
+[draft-liu-oauth-authorization-schemas.md](draft-liu-oauth-authorization-schemas.md).
 
 ## Building
 
-When the markdown source changes on `main`, CI (`.github/workflows/build.yml`)
-rebuilds the xml/txt/html files and commits them automatically. To build
-locally instead, you need [kramdown-rfc2629](https://github.com/cabo/kramdown-rfc2629)
-and [xml2rfc](https://github.com/ietf-tools/xml2rfc):
+The repository uses the
+[martinthomson/i-d-template](https://github.com/martinthomson/i-d-template)
+build system. On every push and pull request, CI builds an
+editor's copy and updates the `gh-pages` branch.
 
-    kramdown-rfc2629 draft-liu-oauth-authorization-schemas-00.md > draft-liu-oauth-authorization-schemas-00.xml
-    xml2rfc --v3 draft-liu-oauth-authorization-schemas-00.xml --text -o draft-liu-oauth-authorization-schemas-00.txt
-    xml2rfc --v3 draft-liu-oauth-authorization-schemas-00.xml --html -o draft-liu-oauth-authorization-schemas-00.html
+To build locally, run `make`. You need
+[kramdown-rfc2629](https://github.com/cabo/kramdown-rfc2629) and
+[xml2rfc](https://github.com/ietf-tools/xml2rfc); the Makefile
+bootstraps the rest into `lib/` on first run.
+
+    make            # build xml/txt/html from the markdown source
+    make idnits     # run idnits checks
+    make diff       # diff against the last submitted version
+    make gh-pages   # update the preview branch
+
+The version number lives in git tags (`draft-liu-oauth-authorization-schemas-00`
+marks -00); the source filename carries no version suffix.
 
 ## Contributing
 

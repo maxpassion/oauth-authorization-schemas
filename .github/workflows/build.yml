@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "draft-liu-oauth-authorization-schemas-*.md"
+      - "draft-liu-oauth-authorization-schemas*.md"
   workflow_dispatch:
 
 permissions:
@@ -31,7 +31,7 @@ jobs:
       - name: Build xml/txt/html from markdown
         run: |
           set -e
-          for md in draft-liu-oauth-authorization-schemas-*.md; do
+          for md in draft-liu-oauth-authorization-schemas*.md; do
             base="${md%.md}"
             echo "Building $base"
             kramdown-rfc2629 "$md" > "$base.xml"
@@ -43,9 +43,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add draft-liu-oauth-authorization-schemas-*.xml \
-                  draft-liu-oauth-authorization-schemas-*.txt \
-                  draft-liu-oauth-authorization-schemas-*.html
+          git add draft-liu-oauth-authorization-schemas*.xml \
+                  draft-liu-oauth-authorization-schemas*.txt \
+                  draft-liu-oauth-authorization-schemas*.html
           if git diff --cached --quiet; then
             echo "No build changes to commit"
           else
