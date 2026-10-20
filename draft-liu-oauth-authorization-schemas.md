@@ -14,6 +14,14 @@ keyword:
 - Fine-Grained Authorization
 - Behavioral Authorization
 
+venue:
+  group: Web Authorization Protocol
+  type: Individual Draft
+  mail: oauth@ietf.org
+  arch: https://mailarchive.ietf.org/arch/browse/oauth/
+  github: maxpassion/oauth-authorization-schemas
+  latest: https://datatracker.ietf.org/doc/draft-liu-oauth-authorization-schemas/
+
 author:
   -
     ins: D. Liu
@@ -21,7 +29,7 @@ author:
     org: Alibaba
     email: max.ldp@alibaba-inc.com
 
-date: 2026-10-12
+date:
 
 informative:
   JSONSchema:
