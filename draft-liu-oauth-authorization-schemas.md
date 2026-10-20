@@ -28,6 +28,11 @@ author:
     name: Dapeng Liu
     org: Alibaba
     email: max.ldp@alibaba-inc.com
+  -
+    ins: Y. Sheffer
+    name: Yaron Sheffer
+    org: Independent
+    email: yaronf.ietf@gmail.com
 
 date:
 
@@ -1575,8 +1580,6 @@ error code defined and registered by
 {{!I-D.ietf-oauth-rar-metadata-remediation}} in the "OAuth 2.0
 WWW-Authenticate Error Code Registry" established by that document.
 
---- back
-
 # Contributors
 {:numbered="false"}
 
@@ -1606,8 +1609,10 @@ Hongru Zhu, and Hui Xue for their valuable input during the
 development of this specification; their contributions helped
 shape key design decisions.
 
+--- back
+
 # Example: transaction_authority
-{:#example-transaction-authority numbered="false"}
+{: #example-transaction-authority}
 
 *This appendix is non-normative.* It defines `transaction_authority`,
 a worked example of a domain-specific authorization schema that
@@ -1728,13 +1733,12 @@ bears responsibility for ensuring each verified behavior is
 consistent with the approved schema instance at runtime.
 
 # Open Issues
-{:#open-issues numbered="false"}
+{: #open-issues}
 
 *This appendix is non-normative; it records questions on which
 working group guidance is sought.*
 
 ## Machine-Readable Constraint Semantics Beyond JSON Schema
-{:numbered="false"}
 
 Clients require semantics such as deny-by-default, cross-field
 relationships, and cumulative-constraint evaluation in a
@@ -1754,7 +1758,6 @@ discussed, but no conclusion has been reached. Working group
 guidance is sought.
 
 ## URI-Valued Type Identifiers
-{:numbered="false"}
 
 This specification allows authorization details type values that are
 HTTPS URIs ({{type-identifiers}}). The RAR metadata mechanisms of
@@ -1766,7 +1769,6 @@ implementations. Coordination on the interoperability of URI-valued
 types is expected; see {{rg-metadata}}.
 
 ## Per-Instance Subset Policy Switch
-{:numbered="false"}
 
 This specification makes subset verification unconditional in Token
 Exchange ({{token-exchange}}). Deployments requiring relaxation
