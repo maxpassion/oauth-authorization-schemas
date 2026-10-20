@@ -4,8 +4,9 @@
 
 Web Authorization Protocol                                        D. Liu
 Internet-Draft                                                   Alibaba
-Intended status: Standards Track                         20 October 2026
-Expires: 23 April 2027
+Intended status: Standards Track                              Y. Sheffer
+Expires: 23 April 2027                                       Independent
+                                                         20 October 2026
 
 
           Domain-Specific Authorization Schemas for OAuth 2.0
@@ -128,17 +129,17 @@ Table of Contents
      12.4.  WWW-Authenticate Parameter Definition
      12.5.  OAuth Protected Resource Metadata Registration
      12.6.  Error Code Usage
-   13. References
-     13.1.  Normative References
-     13.2.  Informative References
    Contributors
    Acknowledgments
-   Example: transaction_authority
-   Open Issues
-     Machine-Readable Constraint Semantics Beyond JSON Schema
-     URI-Valued Type Identifiers
-     Per-Instance Subset Policy Switch
-   Author's Address
+   References
+     Normative References
+     Informative References
+   Appendix A.  Example: transaction_authority
+   Appendix B.  Open Issues
+     B.1.  Machine-Readable Constraint Semantics Beyond JSON Schema
+     B.2.  URI-Valued Type Identifiers
+     B.3.  Per-Instance Subset Policy Switch
+   Authors' Addresses
 
 1.  Introduction
 
@@ -189,10 +190,10 @@ Table of Contents
 
    Out of scope: schema definitions for particular domains are expected
    in follow-up specifications, and the transaction_authority type
-   (Appendix "Example: transaction_authority") is a non-normative worked
-   example; how a deployment determines work membership or plans task
-   sequences is not specified; how the Authorization Server expresses
-   its internal review policies is an implementation decision.
+   (Appendix A) is a non-normative worked example; how a deployment
+   determines work membership or plans task sequences is not specified;
+   how the Authorization Server expresses its internal review policies
+   is an implementation decision.
 
 2.  Terminology
 
@@ -570,9 +571,9 @@ Table of Contents
 
    1.  Authorization Request: The authorization request includes
        authorization_details containing a schema instance (e.g., of type
-       transaction_authority, Appendix "Example: transaction_authority",
-       with the boundary constraints), using RAR ([RFC9396]) for
-       structured authorization requests.
+       transaction_authority, Appendix A, with the boundary
+       constraints), using RAR ([RFC9396]) for structured authorization
+       requests.
 
    2.  Instance Validation: AS validates that the instance conforms to
        the definition of the declared schema (see Section 6).
@@ -747,10 +748,10 @@ Table of Contents
 
    schema_type:  REQUIRED.  The authorization details type identifier (a
       short name or URI, Section 3.1; e.g., transaction_authority as
-      defined in Appendix "Example: transaction_authority") that the
-      client MUST use in the constructed schema instance.  Because the
-      constraint descriptors below use the field names of this schema,
-      the client can map a profile document to an instance mechanically.
+      defined in Appendix A) that the client MUST use in the constructed
+      schema instance.  Because the constraint descriptors below use the
+      field names of this schema, the client can map a profile document
+      to an instance mechanically.
 
    required_scope:  OPTIONAL.  Array of scope values that the access
       token MUST include.
@@ -900,9 +901,8 @@ Table of Contents
 
    1.  Type Check: Verify that the type field identifies a domain-
        specific authorization schema known to the AS (e.g.,
-       transaction_authority, Appendix "Example:
-       transaction_authority"), whether a registered short name or a URI
-       the AS recognizes.
+       transaction_authority, Appendix A), whether a registered short
+       name or a URI the AS recognizes.
 
    2.  Schema Conformance: Validate the instance against the definition
        of the declared schema, including required fields, value types,
@@ -1568,8 +1568,7 @@ Table of Contents
    the schema document.
 
    The registry is initially empty.  The transaction_authority example
-   in Appendix "Example: transaction_authority" is non-normative and is
-   not registered.
+   in Appendix A is non-normative and is not registered.
 
 12.2.  JSON Web Token Claims Registration
 
@@ -1649,9 +1648,31 @@ Table of Contents
    in the "OAuth 2.0 WWW-Authenticate Error Code Registry" established
    by that document.
 
-13.  References
+Contributors
 
-13.1.  Normative References
+   The following individuals contributed to the IETF 126 presentation
+   and discussions from which this specification grew:
+
+   Jeff Lombardo  AWS
+
+   Karl McGuinness  Independent
+
+   Yaron Zehavi  Raiffeisen Bank International
+
+   Yaron Sheffer  Intuit
+
+   Suresh Krishnan  Cisco
+
+Acknowledgments
+
+   The author would like to thank Brian Campbell, Aaron Parecki, Hongru
+   Zhu, and Hui Xue for their valuable input during the development of
+   this specification; their contributions helped shape key design
+   decisions.
+
+References
+
+Normative References
 
    [RFC9396]  Lodderstedt, T., Richer, J., and B. Campbell, "OAuth 2.0
               Rich Authorization Requests", RFC 9396,
@@ -1720,7 +1741,7 @@ Table of Contents
               (JWT)", RFC 7519, DOI 10.17487/RFC7519, May 2015,
               <https://www.rfc-editor.org/info/rfc7519>.
 
-13.2.  Informative References
+Informative References
 
    [JSONSchema]
               JSON Schema, "JSON Schema: A Media Type for Describing
@@ -1759,29 +1780,7 @@ Table of Contents
               <https://datatracker.ietf.org/doc/html/draft-zehavi-oauth-
               authority-metadata-00>.
 
-Contributors
-
-   The following individuals contributed to the IETF 126 presentation
-   and discussions from which this specification grew:
-
-   Jeff Lombardo  AWS
-
-   Karl McGuinness  Independent
-
-   Yaron Zehavi  Raiffeisen Bank International
-
-   Yaron Sheffer  Intuit
-
-   Suresh Krishnan  Cisco
-
-Acknowledgments
-
-   The author would like to thank Brian Campbell, Aaron Parecki, Hongru
-   Zhu, and Hui Xue for their valuable input during the development of
-   this specification; their contributions helped shape key design
-   decisions.
-
-Example: transaction_authority
+Appendix A.  Example: transaction_authority
 
    _This appendix is non-normative._ It defines transaction_authority, a
    worked example of a domain-specific authorization schema that
@@ -1887,12 +1886,12 @@ Example: transaction_authority
    responsibility for ensuring each verified behavior is consistent with
    the approved schema instance at runtime.
 
-Open Issues
+Appendix B.  Open Issues
 
    _This appendix is non-normative; it records questions on which
    working group guidance is sought._
 
-Machine-Readable Constraint Semantics Beyond JSON Schema
+B.1.  Machine-Readable Constraint Semantics Beyond JSON Schema
 
    Clients require semantics such as deny-by-default, cross-field
    relationships, and cumulative-constraint evaluation in a machine-
@@ -1910,7 +1909,7 @@ Machine-Readable Constraint Semantics Beyond JSON Schema
    but no conclusion has been reached.  Working group guidance is
    sought.
 
-URI-Valued Type Identifiers
+B.2.  URI-Valued Type Identifiers
 
    This specification allows authorization details type values that are
    HTTPS URIs (Section 3.1).  The RAR metadata mechanisms of
@@ -1921,14 +1920,19 @@ URI-Valued Type Identifiers
    Coordination on the interoperability of URI-valued types is expected;
    see Section 5.3.
 
-Per-Instance Subset Policy Switch
+B.3.  Per-Instance Subset Policy Switch
 
    This specification makes subset verification unconditional in Token
    Exchange (Section 9).  Deployments requiring relaxation semantics may
    request guidance from the working group.
 
-Author's Address
+Authors' Addresses
 
    Dapeng Liu
    Alibaba
    Email: max.ldp@alibaba-inc.com
+
+
+   Yaron Sheffer
+   Independent
+   Email: yaronf.ietf@gmail.com
