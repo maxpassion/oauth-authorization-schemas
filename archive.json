@@ -1,0 +1,332 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2026-10-22T03:38:01.348379+00:00",
+  "repo": "maxpassion/oauth-authorization-schemas",
+  "labels": [
+    {
+      "name": "accessibility",
+      "description": "Barrier affecting people with disabilities",
+      "color": "f143ab"
+    },
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOVHCmKM8AAAABX5QiVw",
+      "title": "Maximum lifetime for approved work",
+      "url": "https://github.com/maxpassion/oauth-authorization-schemas/issues/1",
+      "state": "OPEN",
+      "author": "maxpassion",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "A failed task with no report leaves the approval alive.The authorization stays active until its maximum lifetime, and the agent has no honest way to end it: completed would be false, withdrawn belongs to the subject or approver, and terminated to an administrator. [Mission Status](https://github.com/mcguinness/mission-bound-authorization/blob/49298acf9e0ea7124b0e2e9310cc916980bda8ae/draft-mcguinness-oauth-mission-status.md?plain=1#L1253-L1261) narrows it by recording who performed each operation, but typically gives the client only complete. The schemas draft has the gap, and its lifecycle table also calls a client's self-report \"safe\".",
+      "createdAt": "2026-10-17T12:51:48Z",
+      "updatedAt": "2026-10-20T14:57:31Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 5,
+      "id": "I_kwDOVHCmKM8AAAABYiAWVg",
+      "title": "State the problem and its requirements before the solution",
+      "url": "https://github.com/maxpassion/oauth-authorization-schemas/issues/5",
+      "state": "OPEN",
+      "author": "yaronf",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "**Where:** Abstract; Introduction, the first two paragraphs\n\nThe abstract opens on the framework: schemas, `authorization_details`, an instance lifecycle, deterministic constraint evaluation, and reverse-guided authorization. A reader meets those mechanisms before learning which OAuth failure they address. The abstract should state the problem, then the solution. The lifecycle, constraint evaluation, and reverse-guided authorization can be named once the solution has been stated.\n\nThe introduction's first paragraph is the right opening: a delegated goal, operations chosen at runtime, and scopes that are either too wide or too narrow. The next paragraph defines the profile. It names schema instances, `authorization_details`, authorization-server review, resource-server evaluation, and reverse-guided errors. The requirements that follow from the first paragraph are still unstated. A solution has to bound a goal whose operations are not fixed at approval time. The bound has to be narrow enough to withhold unchecked power, and stable enough that execution is not interrupted at every step. Each later operation has to be checkable against the approved bound. A miss has to tell the client what authorization to request next. The introduction should state those requirements, and then introduce the solution.",
+      "createdAt": "2026-10-20T11:59:49Z",
+      "updatedAt": "2026-10-20T11:59:49Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 6,
+      "id": "I_kwDOVHCmKM8AAAABYiAXNw",
+      "title": "Give the worked example a budget that outlives one transaction",
+      "url": "https://github.com/maxpassion/oauth-authorization-schemas/issues/6",
+      "state": "OPEN",
+      "author": "yaronf",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "**Where:** `transaction_authority` example (`total_amount_limit`); Constraint Evaluation, the cumulative-state paragraph; the monthly-limit illustration in Guardrail Instances\n\n`total_amount_limit` in the worked example is one cap on one transaction: 50 USD, one `transaction_id`, and a `time_window` of a single day. The field text says the aggregate of the client's transactions MUST NOT exceed `value`, and it does not say whether that aggregate is this transaction, this work, or a calendar period. A purchase constraint has to limit the subject's spending across transactions, per day and per month. The guardrail section already uses \"at most 500 USD this month\" as a typical owner-set limit. The example never shows that limit, and the framework has no field for a recurring period.\n\nEnforcing a day or month budget requires state that outlives one schema instance. The draft places that state at the resource server, taken from the cart and orders that server sees. A subject who spends the day's cap at one merchant can spend it again at the next, because the second server does not hold the first server's counter. The hypothesis is that this state is kept per subject, so every resource server that can draw on the budget reads the same counter. Money is the resource that needs this budgeting by default. The same shape fits other metered resources, for example a send quota used to limit spam.\n\nRelated, and a different ask: #1 (maximum lifetime for approved work, and a client's self-report of completion).",
+      "createdAt": "2026-10-20T11:59:50Z",
+      "updatedAt": "2026-10-20T11:59:50Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 7,
+      "id": "I_kwDOVHCmKM8AAAABYiAYMg",
+      "title": "Add an architecture diagram of the components named in the terminology",
+      "url": "https://github.com/maxpassion/oauth-authorization-schemas/issues/7",
+      "state": "OPEN",
+      "author": "yaronf",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "**Where:** After Terminology, before the framework sections. The protocol flow is a step list and does not show which component holds which object.\n\nThe terminology names the parties and the objects. The reader then has to assemble where each one sits. The diagram is one chain, in this order: Subject, Client, Authorization Server, Resource Server. The client acts for the subject. The client submits a schema instance to the authorization server. The resource server, as the PEP, enforces the bounded work the authorization server approved.\n\nThe terms from the terminology sit on the component that holds them. The approver's decision is recorded when the authorization server approves the instance. State and budget management is a separate component. It is held per subject and outlives one schema instance. The resource server reads it when evaluating a metered behavior, such as a day or month spending cap.\n\n```mermaid\nflowchart LR\n  subject[\"Subject\"] --> client[\"Client<br/>schema instance\"] --> AS[\"Authorization Server<br/>approver, review policy,<br/>guardrail, bounded work\"] --> RS[\"Resource Server, as PEP<br/>task-in-work evaluation\"]\n  budget[\"State / budget management<br/>per subject\"]\n  RS -.-> budget\n```",
+      "createdAt": "2026-10-20T11:59:51Z",
+      "updatedAt": "2026-10-20T11:59:51Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 8,
+      "id": "I_kwDOVHCmKM8AAAABYiAZHg",
+      "title": "Ask the expert whether the schema is of general interest to a community",
+      "url": "https://github.com/maxpassion/oauth-authorization-schemas/issues/8",
+      "state": "OPEN",
+      "author": "yaronf",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "**Where:** Domain-Specific Authorization Schema Types Registry, the Designated Expert criteria; the purpose sentence in Type Identifiers\n\nThe section calls the registry an endorsement channel for schemas intended for cross-vendor reuse. The expert criteria cover syntax, a complete specification, the absence of executable content, and name collision. The criterion to add, as a starting point, is the phrase from [RFC 6838](https://www.rfc-editor.org/rfc/rfc6838), Section 3.1: the schema is of general interest to a community. The community can be the Internet community, a specific industry, or an industry consortium. A schema that serves one vendor falls short of the criterion and stays usable without registration, which this section already permits.",
+      "createdAt": "2026-10-20T11:59:53Z",
+      "updatedAt": "2026-10-20T11:59:53Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 9,
+      "id": "I_kwDOVHCmKM8AAAABYiAacw",
+      "title": "Give actions and operations one vocabulary, or a defined correspondence",
+      "url": "https://github.com/maxpassion/oauth-authorization-schemas/issues/9",
+      "state": "OPEN",
+      "author": "yaronf",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "**Where:** Framework requirement 3; Behavioral Boundary Check in Instance Validation; the profile instance; the `transaction_authority` example and the layered-design paragraphs that follow it; Constraint Evaluation\n\n`actions` is the Rich Authorization Requests common field. In the worked example it carries `search` and `cart.add`. `boundary.operations` carries `ecommerce.search` and `ecommerce.cart.add`. The profile example does the same with `purchase` and `ecommerce.purchase`. The authorization server is told that every operation should correspond to a declared action, and it is given no correspondence rule. At runtime the resource server checks `boundary.operations` and does not check `actions`.\n\nThe common-fields requirement calls `actions` an upper bound on the requested operations. The appendix says `actions` lets the authorization server approve the request without interpreting the boundary. The example keeps the two lists in lockstep, so the authorization server is approving the boundary under another name. One vocabulary should be the permission the resource server enforces. If `actions` stays, the draft needs a stated relation to that vocabulary, including what an authorization server can decide from `actions` alone.",
+      "createdAt": "2026-10-20T11:59:54Z",
+      "updatedAt": "2026-10-20T11:59:54Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 10,
+      "id": "I_kwDOVHCmKM8AAAABYiAbYg",
+      "title": "Use one RAR type for this profile, and a separate field for the schema",
+      "url": "https://github.com/maxpassion/oauth-authorization-schemas/issues/10",
+      "state": "OPEN",
+      "author": "yaronf",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "**Where:** Type Identifiers; the type check in Instance Validation; the open issue \"URI-Valued Type Identifiers\"\n\nA Rich Authorization Requests implementation recognizes an entry by `type`. This draft puts the schema identity in that field, as a short name or an HTTPS URI, and adds no marker that the entry uses this profile. The open issue records the result for URIs: the RAR metadata draft keys type metadata by type name, and implementations assume that name is a simple string.\n\nUse one registered `type` value for the profile. Put the schema identity in a separate field, and let that value be either the short name or the URI. The `type` value is how an implementation recognizes the profile. The field is how the handler selects the schema. A URI then never appears in the `type` position.\n\nThe handler still validates against the schema it knows for that field value. The field is the dispatch key. A dereferenced document remains input for constructing an instance.",
+      "createdAt": "2026-10-20T11:59:55Z",
+      "updatedAt": "2026-10-20T11:59:55Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 11,
+      "id": "I_kwDOVHCmKM8AAAABYiAcVQ",
+      "title": "Define the schema of elements that every domain schema conforms to",
+      "url": "https://github.com/maxpassion/oauth-authorization-schemas/issues/11",
+      "state": "OPEN",
+      "author": "yaronf",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "**Where:** Framework Requirements; the JSON Schema paragraph in Type Identifiers; the open issue \"Machine-Readable Constraint Semantics Beyond JSON Schema\"\n\nThis profile needs a schema that defines its elements, such as operations and constraints. Every domain-specific schema has to conform to that schema. Without that conformance, an implementation can enforce only the domain schemas it was built with, and there is no generic implementation of the profile.\n\nThis document states the framework requirements in prose. A URI type should dereference to a JSON Schema that describes instances of that one domain schema. That document describes one schema's instances. It does not define the elements every domain schema must have.\n\nThe schema of elements can be published in a later version. This document has to state that every domain-specific schema conforms to it. The open issue on machine-readable constraint semantics is the same gap for deny-by-default, cross-field relationships, and cumulative constraints.",
+      "createdAt": "2026-10-20T11:59:56Z",
+      "updatedAt": "2026-10-20T11:59:56Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
+  "pulls": [
+    {
+      "number": 2,
+      "id": "PR_kwDOVHCmKM8AAAABJXccHA",
+      "title": "Align work objects with the bounded work draft; add abandoned end reason",
+      "url": "https://github.com/maxpassion/oauth-authorization-schemas/pull/2",
+      "state": "OPEN",
+      "author": "maxpassion",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Addresses the review feedback from Karl:\r\n\r\n- Reference the bounded work objects instead of redefining them: the `work_id` identifies the governing authorization that an approval decision establishes, per {{?I-D.liu-mcguinness-oauth-bounded-work}} (work-state section, alignment statement)\r\n- Add `abandoned` as a fifth end reason, matching the bounded-work model: terminal, client-reported when giving up the remaining work; failed/interrupted/restarted tasks are not abandonment and the work stays active while retry is possible; kept distinct from `withdrawn` for accountability\r\n- State that the lifecycle ending model aligns with the end conditions of the bounded work draft",
+      "createdAt": "2026-10-19T15:40:25Z",
+      "updatedAt": "2026-10-20T14:21:40Z",
+      "baseRepository": "maxpassion/oauth-authorization-schemas",
+      "baseRefName": "main",
+      "baseRefOid": "a7ee97304e6132a0f67b0091a22894943af865b6",
+      "headRepository": "maxpassion/oauth-authorization-schemas",
+      "headRefName": "align-with-bounded-work",
+      "headRefOid": "389832039f5a0baf74a5fcc3bdb50aec4dbf3501",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOVHCmKM8AAAABTEJ2-Q",
+          "commit": {
+            "abbreviatedOid": "6fd6da2"
+          },
+          "author": "maxpassion",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-19T16:10:20Z",
+          "updatedAt": "2026-10-19T16:12:02Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "```suggestion\nfor the work. \n```",
+              "createdAt": "2026-10-19T16:10:20Z",
+              "updatedAt": "2026-10-19T16:12:02Z"
+            },
+            {
+              "originalPosition": 8,
+              "body": "```suggestion\nit defines how a schema\n```",
+              "createdAt": "2026-10-19T16:11:37Z",
+              "updatedAt": "2026-10-19T16:12:02Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOVHCmKM8AAAABTEMDbg",
+          "commit": {
+            "abbreviatedOid": "0f0a876"
+          },
+          "author": "maxpassion",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-19T16:13:40Z",
+          "updatedAt": "2026-10-19T16:14:25Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "```suggestion\nThis specification defines how a schema\n```",
+              "createdAt": "2026-10-19T16:13:40Z",
+              "updatedAt": "2026-10-19T16:14:25Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "id": "PR_kwDOVHCmKM8AAAABJfyF2A",
+      "title": "Fix schema_ref claim registration; add Token Introspection Response registration",
+      "url": "https://github.com/maxpassion/oauth-authorization-schemas/pull/3",
+      "state": "MERGED",
+      "author": "maxpassion",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "## Summary\r\n\r\n- The claim registration should targeted the \"JSON Web Token Claims\" registry.\r\n- The draft also carries `schema_ref` in token introspection responses (Section 3.6, Section 10.3). RFC 9396 registered `authorization_details` in the \"Token Introspection Response\" registry as well, so `schema_ref` gets the same registration.",
+      "createdAt": "2026-10-20T07:08:16Z",
+      "updatedAt": "2026-10-20T13:15:28Z",
+      "baseRepository": "maxpassion/oauth-authorization-schemas",
+      "baseRefName": "adopt-id-template",
+      "baseRefOid": "6ae49fc31e224a23e170e23972f3fa828d5fcb18",
+      "headRepository": "maxpassion/oauth-authorization-schemas",
+      "headRefName": "fix-schema-ref-iana",
+      "headRefOid": "549fdfba5a9a595576e627487d74314e49875423",
+      "closedAt": "2026-10-20T08:10:16Z",
+      "mergedAt": "2026-10-20T08:10:16Z",
+      "mergedBy": "maxpassion",
+      "mergeCommit": {
+        "oid": "99993c2bf7945e7a23e7212ada4c98f489225c82"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 4,
+      "id": "PR_kwDOVHCmKM8AAAABJisnfg",
+      "title": "Add Yaron Sheffer as a co-author and number the appendices",
+      "url": "https://github.com/maxpassion/oauth-authorization-schemas/pull/4",
+      "state": "MERGED",
+      "author": "yaronf",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "## Summary\n- Add Yaron Sheffer (Independent) as a co-author. He remains on the Contributors list.\n- Keep Contributors and Acknowledgments in the body, before the references.\n- Number the worked example and the open issues so they render as Appendix A and Appendix B.\n\n\nMade with [Cursor](https://cursor.com)",
+      "createdAt": "2026-10-20T11:53:53Z",
+      "updatedAt": "2026-10-20T14:09:39Z",
+      "baseRepository": "maxpassion/oauth-authorization-schemas",
+      "baseRefName": "main",
+      "baseRefOid": "1f366637bec0dbccd38d7d1fe48501210ebc819c",
+      "headRepository": "maxpassion/oauth-authorization-schemas",
+      "headRefName": "sheffer-coauthor-appendices",
+      "headRefOid": "1e1e82226c9000c4f4be0884356074392c5de238",
+      "closedAt": "2026-10-20T14:09:39Z",
+      "mergedAt": "2026-10-20T14:09:39Z",
+      "mergedBy": "maxpassion",
+      "mergeCommit": {
+        "oid": "a7ee97304e6132a0f67b0091a22894943af865b6"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOVHCmKM8AAAABTPc-Dg",
+          "commit": {
+            "abbreviatedOid": "1e1e822"
+          },
+          "author": "maxpassion",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-10-20T14:09:27Z",
+          "updatedAt": "2026-10-20T14:09:27Z",
+          "comments": []
+        }
+      ]
+    }
+  ]
+}
