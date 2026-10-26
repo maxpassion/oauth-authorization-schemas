@@ -5,8 +5,10 @@
 Web Authorization Protocol                                        D. Liu
 Internet-Draft                                                   Alibaba
 Intended status: Standards Track                              Y. Sheffer
-Expires: 23 April 2027                                       Independent
-                                                         20 October 2026
+Expires: 29 April 2027                                       Independent
+                                                               Y. Zehavi
+                                           Raiffeisen Bank International
+                                                         26 October 2026
 
 
           Domain-Specific Authorization Schemas for OAuth 2.0
@@ -65,7 +67,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 April 2027.
+   This Internet-Draft will expire on 29 April 2027.
 
 Copyright Notice
 
@@ -1936,3 +1938,8 @@ Authors' Addresses
    Yaron Sheffer
    Independent
    Email: yaronf.ietf@gmail.com
+
+
+   Yaron Zehavi
+   Raiffeisen Bank International
+   Email: yaron.zehavi@rbinternational.com
