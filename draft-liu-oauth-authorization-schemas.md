@@ -1597,9 +1597,6 @@ Jeff Lombardo
 Karl McGuinness
 : Independent
 
-Yaron Zehavi
-: Raiffeisen Bank International
-
 Yaron Sheffer
 : Intuit
 
