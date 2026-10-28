@@ -358,6 +358,14 @@ Server evaluates each requested task against the work instance
 through deterministic constraint evaluation ({{rs-enforcement}}), a
 *task-in-work evaluation request*.
 
+The work object used here is the bounded work of
+{{?I-D.liu-mcguinness-oauth-bounded-work}}: the `work_id` identifies
+the governing authorization that an approval decision establishes
+for the work.
+This specification defines how a schema
+instance carries the work's approved bounds and how the Resource
+Server evaluates tasks against them.
+
 The approved schema instance represents the current authorized state
 of the work. Schemas MAY define cumulative constraints, whose
 values the Resource Server accumulates across the tasks performed
@@ -1131,9 +1139,10 @@ Based on the constraint evaluation:
 # Instance Lifecycle {#lifecycle}
 
 An approved schema instance has a lifecycle. The lifecycle has two
-states and four ending reasons; the requested instance before
+states and five ending reasons; the requested instance before
 approval is an object (a proposal), not a state: a rejected
-proposal never enters the lifecycle.
+proposal never enters the lifecycle. The ending model aligns with
+the end conditions of {{?I-D.liu-mcguinness-oauth-bounded-work}}.
 
 active:
 : The instance has been approved and bound. Tokens issued for it
@@ -1147,12 +1156,18 @@ ended:
    the AS (the monotonic narrowing principle,
    {{token-exchange}}).
 
-An active instance ends in one of four ways, and the distinction
+An active instance ends in one of five ways, and the distinction
 among them matters for accountability: **completed** (the
 termination criterion is satisfied, e.g., the report is filed),
 **withdrawn** (the approver withdraws the work), **terminated** (an
-administrator or governance process ends it), or **expired** (the
-maximum lifetime elapses, e.g., a `time_window` constraint).
+administrator or governance process ends it), **expired** (the
+maximum lifetime elapses, e.g., a `time_window` constraint), or
+**abandoned** (the client reports giving up the remaining work;
+failed, interrupted, or restarted tasks are not abandonment, and
+the work stays active while they may still be retried). Abandonment
+is terminal, like any other ending: it ends the work's authority,
+and the record distinguishes an agent that abandoned the work from
+an approver that withdrew it.
 
 The framework maps these concepts onto OAuth mechanisms as follows:
 
@@ -1162,6 +1177,7 @@ The framework maps these concepts onto OAuth mechanisms as follows:
 | ended (withdrawn or terminated) | AS marks the registered instance ended, revokes associated tokens ({{!RFC7009}}), and refuses new issuance, refresh, and derivation referencing it; token introspection ({{!RFC7662}}) returns `active: false`; RS applies deny-by-default |
 | ended (expired) | `time_window` or maximum lifetime: the RS determines expiry deterministically from the instance content, without AS-side state transition; the AS refuses refresh (token lifetime SHOULD NOT exceed instance lifetime, {{refresh-handling}}) |
 | ended (completed) | Termination criterion satisfied; which party reports completion is deployment-defined (a client's self-report is safe in this framework because ending only removes authority) |
+| ended (abandoned) | The client reports abandoning the remaining work; ending is terminal; a self-report only ends authority, it never extends it |
 | inline instance (degenerate case) | For an instance that governs a single request, ended is equivalent to token revocation or expiry: a bounded token lifetime gated on active authorization |
 
 Guardrail instances follow the same lifecycle, with the tightening,
