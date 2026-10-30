@@ -42,7 +42,7 @@ author:
     ins: S. Krishnan
     name: Suresh Krishnan
     org: Cisco
-    suresh.krishnan@gmail.com
+    email: suresh.krishnan@gmail.com
 
 date:
 
