@@ -1605,13 +1605,10 @@ Karl McGuinness
 Yaron Sheffer
 : Intuit
 
-Suresh Krishnan
-: Cisco
-
 # Acknowledgments
 {:numbered="false"}
 
-The author would like to thank Brian Campbell, Aaron Parecki,
+The authors would like to thank Brian Campbell, Aaron Parecki,
 Hongru Zhu, and Hui Xue for their valuable input during the
 development of this specification; their contributions helped
 shape key design decisions.
