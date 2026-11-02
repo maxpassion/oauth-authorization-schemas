@@ -6,6 +6,10 @@ Web Authorization Protocol                                        D. Liu
 Internet-Draft                                                   Alibaba
 Intended status: Standards Track                              Y. Sheffer
 Expires: 6 May 2027                                          Independent
+                                                               Y. Zehavi
+                                           Raiffeisen Bank International
+                                                             S. Krishnan
+                                                                   Cisco
                                                          2 November 2026
 
 
@@ -1657,15 +1661,11 @@ Contributors
 
    Karl McGuinness  Independent
 
-   Yaron Zehavi  Raiffeisen Bank International
-
    Yaron Sheffer  Intuit
-
-   Suresh Krishnan  Cisco
 
 Acknowledgments
 
-   The author would like to thank Brian Campbell, Aaron Parecki, Hongru
+   The authors would like to thank Brian Campbell, Aaron Parecki, Hongru
    Zhu, and Hui Xue for their valuable input during the development of
    this specification; their contributions helped shape key design
    decisions.
@@ -1936,3 +1936,13 @@ Authors' Addresses
    Yaron Sheffer
    Independent
    Email: yaronf.ietf@gmail.com
+
+
+   Yaron Zehavi
+   Raiffeisen Bank International
+   Email: yaron.zehavi@rbinternational.com
+
+
+   Suresh Krishnan
+   Cisco
+   Email: suresh.krishnan@gmail.com
