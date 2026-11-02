@@ -5,12 +5,12 @@
 Web Authorization Protocol                                        D. Liu
 Internet-Draft                                                   Alibaba
 Intended status: Standards Track                              Y. Sheffer
-Expires: 3 May 2027                                          Independent
+Expires: 6 May 2027                                          Independent
                                                                Y. Zehavi
                                            Raiffeisen Bank International
                                                              S. Krishnan
                                                                    Cisco
-                                                         30 October 2026
+                                                         2 November 2026
 
 
           Domain-Specific Authorization Schemas for OAuth 2.0
@@ -69,7 +69,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 May 2027.
+   This Internet-Draft will expire on 6 May 2027.
 
 Copyright Notice
 
@@ -1663,11 +1663,9 @@ Contributors
 
    Yaron Sheffer  Intuit
 
-   Suresh Krishnan  Cisco
-
 Acknowledgments
 
-   The author would like to thank Brian Campbell, Aaron Parecki, Hongru
+   The authors would like to thank Brian Campbell, Aaron Parecki, Hongru
    Zhu, and Hui Xue for their valuable input during the development of
    this specification; their contributions helped shape key design
    decisions.
